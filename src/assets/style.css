@@ -1,3 +1,28 @@
+.btn {
+    height: 40px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: blue;
+}
+
+.btn:disabled {
+    background-color: grey;
+}
+
+.nav-button {
+    text-align: center;
+}
+
+.nav-button .btn {
+    margin: 5px;
+}
+
 .character-grid {
     display: grid;
     grid-template-columns: repeat(3,1fr);
