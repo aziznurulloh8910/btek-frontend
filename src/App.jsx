@@ -1,32 +1,21 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import './assets/style.css'
+import React from "react";
+import axios from "axios";
 
-function App() {
-  const [characters, setCharacters] = useState([])
-
-  useEffect(() =>{
-    const fetchData = async () => {
-      try{
-        const {data} = await axios.get(`https://rickandmortyapi.com/api/character`)
-        setCharacters(data.results)
-      }catch(error){
-        console.error(error);
-      }
-    }
-    fetchData()
-  },[])
+const App  = () => {
+  const [data, setData] = React.useState([])
+  React.useEffect(()=> {
+    axios.get('http://rickandmortyapi.com/api/character')
+      .then(({data}) => setData(data.results))
+  }, [])
 
   return (
-    <div className="App">
-      <div className="results">
-        {characters.map(character => (
-          <div>
-            <img src={character.image} alt={character.name}/>
-            {character.name}
-          </div>
-        ))}
-      </div>
+    <div className="character-grid">
+      {data.map(char => (
+        <div className="character-card" key={String(char.id)}>
+          <img className="img-responsive" src={char.image} alt={char.name} /> 
+          <div className="character-name">{char.name}</div>
+        </div>
+      ))}
     </div>
   )
 }

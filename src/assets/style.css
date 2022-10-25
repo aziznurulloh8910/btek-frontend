@@ -1,10 +1,18 @@
-.results {
+.character-grid {
     display: grid;
-    gap: 15px;
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.character-grid .character-card {
     text-align: center;
-    margin-top: 50px;
+}
+
+.character-grid .character-name {
+    text-align: center;
+}
+
+.character-grid .character-card .img-responsive {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
 }
