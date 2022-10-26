@@ -1,20 +1,13 @@
 import React from 'react';
 import {
-  createBrowserRouter, Navigate, RouterProvider, useLocation,
+  createBrowserRouter, RouterProvider,
 } from 'react-router-dom';
+import RequireAuth from './components/RequireAuth';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 // import CharacterDetail from './pages/CharacterDetail';
 // import CharacterList from './pages/CharacterList';
-
-function RequireAuth({ children }) {
-  const location = useLocation();
-  const token = window.localStorage.getItem('token');
-  if (!token) {
-    return <Navigate to="/login" state={{ from: location }} />;
-  }
-  return children;
-}
 
 const router = createBrowserRouter([
   {
@@ -24,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/profile',
+    element: <RequireAuth><Profile /></RequireAuth>,
   },
 ]);
 

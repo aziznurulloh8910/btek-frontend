@@ -11,6 +11,7 @@ function Home() {
     <div>
       Home &middot;
       <Link to="/characters">Go to Character List</Link>
+      <Link to="/profile">Profile</Link>
       <button type="button" onClick={logout}>Logout</button>
     </div>
   );
