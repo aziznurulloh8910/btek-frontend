@@ -2,9 +2,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function ResetPassword() {
+function Register() {
   const navigate = useNavigate();
-  const resetAction = async (e) => {
+  const register = async (e) => {
     try {
       e.preventDefault();
       navigate('/login');
@@ -14,26 +14,18 @@ function ResetPassword() {
   };
 
   return (
-    <form onSubmit={resetAction}>
-      Code :
-      <br />
-      <input type="number" name="code" />
-      <br />
+    <form onSubmit={register}>
       Email :
       <br />
       <input type="email" name="email" />
       <br />
-      New Password :
+      Password :
       <br />
-      <input type="password" name="newPassword" />
-      <br />
-      Confirm Password :
-      <br />
-      <input type="password" name="confirmPassword" />
+      <input type="password" name="password" />
       <br />
       <button type="submit">Submit</button>
     </form>
   );
 }
 
-export default ResetPassword;
+export default Register;
