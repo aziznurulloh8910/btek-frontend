@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import http from '../helpers/http';
 
 function Login() {
@@ -19,13 +19,6 @@ function Login() {
       // eslint-disable-next-line no-alert
       window.alert(err.response.data.message);
     }
-    // if (e.target.email.value === 'admin@mail.com' && e.target.password.value === '1234') {
-    //   window.localStorage.setItem('token', 'some token');
-    //   window.alert('Login success');
-    //   navigate('/');
-    // } else {
-    //   window.alert('Wrong email or password');
-    // }
   };
   return (
     <form onSubmit={submitAction}>
@@ -33,6 +26,9 @@ function Login() {
       <br />
       <input type="password" name="password" />
       <br />
+      <div>
+        <Link to="/forgot-password">Forgot Password</Link>
+      </div>
       <button type="submit">Login</button>
     </form>
   );
