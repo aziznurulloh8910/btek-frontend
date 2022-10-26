@@ -16,24 +16,25 @@ function Login() {
       window.localStorage.setItem('token', data.results.token);
       navigate('/');
     } catch (err) {
-      // eslint-disable-next-line no-alert
       window.alert(err.response.data.message);
     }
   };
   return (
-    <form onSubmit={submitAction}>
-      <input type="email" name="email" />
-      <br />
-      <input type="password" name="password" />
-      <br />
+    <>
+      <form onSubmit={submitAction}>
+        <input type="email" name="email" />
+        <br />
+        <input type="password" name="password" />
+        <br />
+        <button type="submit">Login</button>
+      </form>
       <div>
         <Link to="/forgot-password">Forgot Password</Link>
       </div>
       <div>
         <Link to="/register">Register</Link>
       </div>
-      <button type="submit">Login</button>
-    </form>
+    </>
   );
 }
 

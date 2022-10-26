@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import http from '../helpers/http';
 
 function Profile() {
@@ -28,6 +29,9 @@ function Profile() {
         Picture :
         {' '}
         {userProfile?.picture}
+      </div>
+      <div>
+        <Link to="/edit-profile">Edit Profile</Link>
       </div>
     </div>
   );

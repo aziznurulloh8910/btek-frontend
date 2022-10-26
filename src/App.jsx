@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 // import CharacterDetail from './pages/CharacterDetail';
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/profile',
     element: <RequireAuth><Profile /></RequireAuth>,
+  },
+  {
+    path: '/edit-profile',
+    element: <RequireAuth><EditProfile /></RequireAuth>,
   },
   {
     path: '/forgot-password',
