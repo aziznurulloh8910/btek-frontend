@@ -10,8 +10,6 @@ import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
-// import CharacterDetail from './pages/CharacterDetail';
-// import CharacterList from './pages/CharacterList';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +29,7 @@ const router = createBrowserRouter([
     element: <RequireAuth><Profile /></RequireAuth>,
   },
   {
-    path: '/edit-profile',
+    path: '/profile/edit',
     element: <RequireAuth><EditProfile /></RequireAuth>,
   },
   {
