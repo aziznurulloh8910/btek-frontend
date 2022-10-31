@@ -37,13 +37,13 @@ function Login() {
       >
         {({ errors, touched }) => (
           <Form>
-            <Field type="email" name="email" />
+            <Field type="email" name="email" placeholder="Email" />
             <br />
             {errors.email && touched.email ? (
               <div>{errors.email}</div>
             ) : null}
             <br />
-            <Field type="password" name="password" />
+            <Field type="password" name="password" placeholder="Password" />
             <br />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
