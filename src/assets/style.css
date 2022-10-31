@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .btn {
-  @apply rounded-lg
+  @apply rounded-xl
 }
 
 /* .btn {

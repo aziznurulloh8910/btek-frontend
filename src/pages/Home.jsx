@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const navigate = useNavigate();
@@ -8,16 +7,19 @@ function Home() {
     window.localStorage.removeItem('token');
     navigate('/login');
   };
+  const profile = () => {
+    navigate('/profile');
+  };
   return (
-    <div>
-      Home &middot;
-      <br />
-      <Link to="/profile">Profile</Link>
-      <br />
-      <Link to="/profile/edit">Edit Profile</Link>
-      <br />
-      <button type="button" onClick={logout}>Logout</button>
-      <Button>OK</Button>
+    <div className="hero min-h-screen bg-base-200">
+      <div className="hero-content text-center">
+        <div className="max-w-md">
+          <h1 className="text-5xl font-bold">This is home page</h1>
+          <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+          <button type="button" onClick={logout} className="btn btn-primary btn-outline mx-1">Logout</button>
+          <button type="button" onClick={profile} className="btn btn-primary mx-1">Profile</button>
+        </div>
+      </div>
     </div>
   );
 }
