@@ -1,9 +1,11 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import YupPassword from 'yup-password';
 import * as Yup from 'yup';
-import http from '../helpers/http';
+import * as profileAction from '../redux/asyncActions/profile';
+// import http from '../helpers/http';
 
 YupPassword(Yup);
 
@@ -16,31 +18,51 @@ function EditProfile() {
     picture: Yup.mixed().nullable(),
   });
 
-  const [userProfile, setUserProfile] = React.useState({});
-  const getProfile = async () => {
-    const token = window.localStorage.getItem('token');
-    const { data } = await http(token).get('/profile');
-    setUserProfile(data.results);
-  };
+  const userProfile = useSelector((state) => state.profile.user);
+  const dispatch = useDispatch();
+
+  // const [userProfile, setUserProfile] = React.useState({});
+  // const getProfile = async () => {
+  //   const token = window.localStorage.getItem('token');
+  //   const { data } = await http(token).get('/profile');
+  //   setUserProfile(data.results);
+  // };
+
+  // const [file, setFile] = React.useState(null);
+  // const submitAction = async (values) => {
+  //   const token = window.localStorage.getItem('token');
+  //   const form = new FormData();
+  //   form.append('fullName', values.fullName);
+  //   form.append('birthDate', values.birthDate);
+  //   form.append('picture', file);
+  //   const { data } = await http(token).put('/profile', form, {
+  //     headers: {
+  //       'Content-Type': 'multypart/form-data',
+  //     },
+  //   });
+  //   setUserProfile(data.results);
+  //   navigate('/profile');
+  // };
 
   const [file, setFile] = React.useState(null);
-  const submitAction = async (values) => {
+  const submitAction = (e) => {
     const token = window.localStorage.getItem('token');
-    const form = new FormData();
-    form.append('fullName', values.fullName);
-    form.append('birthDate', values.birthDate);
-    form.append('picture', file);
-    const { data } = await http(token).put('/profile', form, {
-      headers: {
-        'Content-Type': 'multypart/form-data',
-      },
-    });
-    setUserProfile(data.results);
+    const data = {
+      fullName: e.fullName,
+      birthDate: e.birthDate,
+      picture: file,
+    };
+
+    dispatch(profileAction.editData({ token, data }));
     navigate('/profile');
   };
 
   React.useEffect(() => {
-    getProfile();
+    // getProfile();
+    const token = window.localStorage.getItem('token');
+    if (!userProfile?.fullName) {
+      dispatch(profileAction.getDataUser({ token }));
+    }
   }, []);
 
   return (
