@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
 
 function Home() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Home() {
       <Link to="/profile/edit">Edit Profile</Link>
       <br />
       <button type="button" onClick={logout}>Logout</button>
+      <Button>OK</Button>
     </div>
   );
 }

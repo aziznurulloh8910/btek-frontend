@@ -70,9 +70,8 @@ function EditProfile() {
       {userProfile?.picture && <img style={{ width: '240px', height: '100%' }} src={`http://localhost:8888/assets/uploads/${userProfile?.picture}`} alt={userProfile?.picture} />}
       <Formik
         initialValues={{
-          fullName: '',
-          picture: '',
-          birthDate: '',
+          fullName: userProfile?.fullName,
+          birthDate: userProfile?.birthDate,
         }}
         validationSchema={editProfileSchema}
         onSubmit={submitAction}

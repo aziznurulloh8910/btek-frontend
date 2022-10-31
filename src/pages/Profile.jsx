@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 // import http from '../helpers/http';
 
 import * as profileAction from '../redux/asyncActions/profile';
+import * as profileReducerAction from '../redux/reducers/profile';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -43,6 +44,7 @@ function Profile() {
       <div>
         <Link to="/profile/edit">Edit Profile</Link>
       </div>
+      <button onClick={() => dispatch(profileReducerAction.resetProfile())}>Reset data redux</button>
     </div>
   );
 }

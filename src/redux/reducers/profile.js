@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createSlice } from '@reduxjs/toolkit';
 
 import * as profileAction from '../asyncActions/profile';
@@ -9,7 +10,9 @@ const initialState = {
 const profile = createSlice({
   name: 'profile',
   initialState,
-  reducers: {},
+  reducers: {
+    resetProfile: (state) => initialState,
+  },
   extraReducers: (builder) => {
     builder.addCase(profileAction.getDataUser.fulfilled, (state, action) => {
       // eslint-disable-next-line no-param-reassign
@@ -22,6 +25,6 @@ const profile = createSlice({
   },
 });
 
-// export const {} = profile.actions;
+export const { resetProfile } = profile.actions;
 
 export default profile.reducer;

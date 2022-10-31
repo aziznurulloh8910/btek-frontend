@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
@@ -26,7 +27,7 @@ function Login() {
     }
   };
   return (
-    <>
+    <div className="h-screen flex justify-center items-center">
       <Formik
         initialValues={{
           email: '',
@@ -37,29 +38,28 @@ function Login() {
       >
         {({ errors, touched }) => (
           <Form>
-            <Field type="email" name="email" placeholder="Email" />
+            <label htmlFor="email">Email</label>
+            <Field className="input input-bordered w-full max-w-xs" type="email" name="email" placeholder="Email" />
             <br />
             {errors.email && touched.email ? (
-              <div>{errors.email}</div>
+              <div className="text-red-400">{errors.email}</div>
             ) : null}
             <br />
-            <Field type="password" name="password" placeholder="Password" />
+            <label htmlFor="password">Password</label>
+            <Field className="input input-bordered w-full max-w-xs" type="password" name="password" placeholder="Password" />
             <br />
             {errors.password && touched.password ? (
-              <div>{errors.password}</div>
+              <div className="text-red-400">{errors.password}</div>
             ) : null}
             <br />
-            <button type="submit">Login</button>
+            <button className="btn btn-primary block w-full" type="submit">Login</button>
+            <Link to="/forgot-password">Forgot Password</Link>
+            <br />
+            <Link to="/register">Register</Link>
           </Form>
         )}
       </Formik>
-      <div>
-        <Link to="/forgot-password">Forgot Password</Link>
-      </div>
-      <div>
-        <Link to="/register">Register</Link>
-      </div>
-    </>
+    </div>
   );
 }
 
