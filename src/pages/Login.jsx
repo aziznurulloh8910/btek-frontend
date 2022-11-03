@@ -3,9 +3,10 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
 import YupPassword from 'yup-password';
 import * as Yup from 'yup';
-import http from '../helpers/http';
+import * as auth from '../redux/asyncActions/auth';
 
 YupPassword(Yup);
 
@@ -17,16 +18,23 @@ function Login() {
     password: Yup.string().password().required(),
   });
 
+  const dispatch = useDispatch();
+  const store = useSelector((state) => state.auth);
+
   const submitAction = async (values) => {
     try {
-      const form = new URLSearchParams(values);
-      const { data } = await http().post('/auth/login', form.toString());
-      window.localStorage.setItem('token', data.results.token);
-      navigate('/');
+      dispatch(auth.login(values));
     } catch (err) {
       window.alert(err.response.data.message);
     }
   };
+
+  React.useEffect(() => {
+    if (store.user.token) {
+      window.localStorage.setItem('token', store.user.token);
+      navigate('/');
+    }
+  }, [store]);
   return (
     <div className="grid grid-cols-6 gap-4">
       <div className="h-screen flex justify-center items-center col-start-2 col-span-4">

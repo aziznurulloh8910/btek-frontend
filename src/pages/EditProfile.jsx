@@ -62,7 +62,7 @@ function EditProfile() {
                 >
                   {({ errors, touched }) => (
                     <Form>
-                      <label htmlFor="email">Email</label>
+                      <label htmlFor="email">Full name</label>
                       <Field type="text" name="fullName" className="input input-bordered w-full max-w-xs mb-2" placeholder="Full name" />
                       {errors.fullName && touched.fullName ? (
                         <div className="text-red-400">{errors.fullName}</div>
