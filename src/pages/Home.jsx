@@ -1,10 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as authAction from '../redux/reducers/auth';
 
 function Home() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const logout = () => {
     window.localStorage.removeItem('token');
+    dispatch(authAction.handleReset());
     navigate('/login');
   };
   const profile = () => {

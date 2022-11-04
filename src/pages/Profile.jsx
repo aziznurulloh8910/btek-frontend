@@ -30,7 +30,7 @@ function Profile() {
             Hallo, {userProfile?.fullName}. Your birtdate is {userProfile?.birthDate}
           </p>
           <button type="button" className="btn btn-primary mx-1 btn-outline">
-            <Link to="/profile">Back</Link>
+            <Link to="/">Back</Link>
           </button>
           <button type="button" className="btn btn-primary mx-1">
             <Link to="/profile/edit">Edit Profile</Link>

@@ -6,7 +6,7 @@ import { Formik, Form, Field } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import YupPassword from 'yup-password';
 import * as Yup from 'yup';
-import * as auth from '../redux/asyncActions/auth';
+import * as authAction from '../redux/asyncActions/auth';
 
 YupPassword(Yup);
 
@@ -23,7 +23,7 @@ function Login() {
 
   const submitAction = async (values) => {
     try {
-      dispatch(auth.login(values));
+      dispatch(authAction.login(values));
     } catch (err) {
       window.alert(err.response.data.message);
     }
