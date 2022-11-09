@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-unused-vars */
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -15,11 +16,9 @@ const profile = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(profileAction.getDataUser.fulfilled, (state, action) => {
-      // eslint-disable-next-line no-param-reassign
       state.user = action.payload.results;
     });
     builder.addCase(profileAction.editData.fulfilled, (state, action) => {
-      // eslint-disable-next-line no-param-reassign
       state.user = action.payload.results;
     });
   },

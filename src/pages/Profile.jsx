@@ -24,7 +24,7 @@ function Profile() {
         <div className="max-w-md">
           <h1 className="text-5xl font-bold">Your Profile</h1>
           <div className="flex justify-center items-center">
-            {userProfile?.picture && <img style={{ width: '50%', height: '50%' }} src={`http://localhost:8888/assets/uploads/${userProfile?.picture}`} alt={userProfile?.picture} />}
+            {userProfile?.picture && <img style={{ width: '50%', height: '50%' }} src={`${userProfile?.picture}`} alt={userProfile?.picture} />}
           </div>
           <p className="py-6">
             Hallo, {userProfile?.fullName}. Your birtdate is {userProfile?.birthDate}
