@@ -73,7 +73,7 @@ function EditProfile() {
                         <div className="text-red-400">{errors.picture}</div>
                       ) : null}
                       <label htmlFor="birtDate">Birth date</label>
-                      <Field type="text" name="birthDate" className="input input-bordered w-full max-w-xs mb-5" placeholder="Birth date" />
+                      <Field type="date" name="birthDate" className="input input-bordered w-full max-w-xs mb-5" placeholder="Birth date" />
                       {errors.birthDate && touched.birthDate ? (
                         <div className="text-red-400">{errors.birthDate}</div>
                       ) : null}
